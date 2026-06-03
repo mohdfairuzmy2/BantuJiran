@@ -1,5 +1,5 @@
-# BantuJiran — production-ish container (PHP 8.2 + Laravel, MySQL via env)
-FROM php:8.2-cli
+# BantuJiran — production-ish container (PHP 8.4 + Laravel, MySQL via env)
+FROM php:8.4-cli
 
 # System deps + PHP extensions required by Laravel + MySQL
 RUN apt-get update && apt-get install -y --no-install-recommends \
