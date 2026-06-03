@@ -1,0 +1,19 @@
+{
+    "name": "BantuJiran",
+    "short_name": "BantuJiran",
+    "description": "Komuniti digital hiper-lokal. Jiran membantu jiran.",
+    "start_url": "/",
+    "display": "standalone",
+    "orientation": "portrait",
+    "background_color": "#f1f5f9",
+    "theme_color": "#2563eb",
+    "icons": [
+        {
+            "src": "/favicon.ico",
+            "sizes": "64x64",
+            "type": "image/x-icon"
+        }
+    ],
+    "categories": ["social", "utilities"],
+    "lang": "ms"
+}
