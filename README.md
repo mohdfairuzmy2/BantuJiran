@@ -22,24 +22,48 @@ Platform komuniti digital hiper-lokal Malaysia. Menghubungkan jiran dalam radius
 - **Skor Kepercayaan** — dikira daripada ulasan selepas bantuan selesai; lencana jiran dipaparkan.
 - **Privasi** — nombor telefon & alamat tepat disembunyikan; komunikasi melalui sembang dalaman.
 
+## Keperluan
+- PHP 8.2+ dengan sambungan biasa Laravel (mbstring, pdo_mysql, dll.)
+- Composer 2
+- MySQL 8+ (perlu sokongan fungsi spatial `ST_Distance_Sphere`)
+- Node.js 18+ & npm (pilihan — hanya jika anda mahu bina aset Vite/Tailwind)
+
 ## Persediaan Setempat
 
 ```bash
-# 1. Pangkalan data (cipta DB & pengguna)
+# 1. Klon repo
+git clone https://github.com/mohdfairuzmy2/BantuJiran.git
+cd BantuJiran
+
+# 2. Pasang kebergantungan PHP
+composer install
+
+# 3. Sediakan fail persekitaran & kunci aplikasi
+cp .env.example .env
+php artisan key:generate
+
+# 4. Cipta pangkalan data & pengguna
 mysql -u root -p -e "
 CREATE DATABASE IF NOT EXISTS bantujiran CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 CREATE USER IF NOT EXISTS 'bantujiran'@'localhost' IDENTIFIED BY 'bantujiran123';
 GRANT ALL PRIVILEGES ON bantujiran.* TO 'bantujiran'@'localhost';
 FLUSH PRIVILEGES;"
 
-# 2. Migrasi + data demo
+# 5. Migrasi + data demo
 php artisan migrate --seed
 
-# 3. Jalankan pelayan
+# 6. (Pilihan) Bina aset frontend — UI utama guna CDN, jadi langkah ini tidak wajib
+npm install
+npm run build
+
+# 7. Jalankan pelayan
 php artisan serve
 ```
 
-`.env` telah dikonfigurasi untuk `DB_DATABASE=bantujiran`, `DB_USERNAME=bantujiran`, `DB_PASSWORD=bantujiran123`.
+Buka `http://localhost:8000` dan log masuk dengan akaun demo di bawah.
+
+> Pastikan tetapan `DB_*` dalam `.env` sepadan: lalai projek menggunakan
+> `DB_DATABASE=bantujiran`, `DB_USERNAME=bantujiran`, `DB_PASSWORD=bantujiran123`.
 
 ## Akaun Demo (kawasan Putrajaya)
 | Nama | Telefon | Tahap |
